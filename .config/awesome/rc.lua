@@ -181,7 +181,7 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
 
                                   -- Create a battery widget
                                   batterywidget = wibox.widget.textbox()
-                                  batterywidgettimer = timer({ timeout = 5})
+                                  batterywidgettimer = timer({ timeout = 3})
                                   batterywidgettimer:connect_signal("timeout",
                                   function()
                                           fh = io.popen("acpi | cut -d, -f 2,3 -", "r")
@@ -274,7 +274,7 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                           awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
                           -- Prompt
-                          awful.key({ modkey },            "space",     function () mypromptbox[mouse.screen]:run() end),
+                          awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 
                           awful.key({ modkey }, "x",
                           function ()
