@@ -284,7 +284,10 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                   awful.util.getdir("cache") .. "/history_eval")
                           end),
                           -- Menubar
-                          awful.key({ modkey }, "p", function() menubar.show() end)
+                          awful.key({ modkey }, "p", function() menubar.show() end),
+                          -- Screen Backlight
+                          awful.key({ modkey }, "F1", function () awful.util.spawn("xbacklight -dec 10") end),
+                          awful.key({ modkey }, "F2", function () awful.util.spawn("xbacklight -inc 10") end)
                           )
 
                           clientkeys = awful.util.table.join(
