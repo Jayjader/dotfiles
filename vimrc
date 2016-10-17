@@ -84,6 +84,11 @@ let g:syntastic_check_on_wq = 0
     let g:syntastic_java_javac_config_file_enabled=1
     let g:syntastic_java_javac_options='-Xlint'
 
+" For Whitespace
+    autocmd Filetype whitespace setlocal noexpandtab
+    autocmd Filetype whitespace setlocal shiftwidth=8
+    autocmd Filetype whitespace setlocal softtabstop=8
+
 " For html and css
     autocmd Filetype htlm,css setlocal shiftwidth=2
 
