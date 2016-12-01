@@ -27,8 +27,6 @@
 
 set nocompatible
 
-set background=dark
-
 " tabbing
 set expandtab
 set shiftwidth=4
@@ -36,11 +34,15 @@ set softtabstop=4
 
 set backspace=2
 
-colorscheme slate
-
 set nu
 set autoindent
-syntax on
+syntax enable
+
+set background=dark
+Bundle 'vim-colors-solarized'
+colorscheme solarized
+let g:solarized_termcolors=256
+
 
 let g:ada_standard_types=1
 
@@ -65,6 +67,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+"For Python
+    let g:ycm_python_binary_path = '/usr/bin/python3'
 
 " For C++
     let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm_extra_conf.py'
