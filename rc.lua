@@ -274,12 +274,12 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                           awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
                           -- Prompt
-                          awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+                          awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen.index]:run() end),
 
                           awful.key({ modkey }, "x",
                           function ()
                                   awful.prompt.run({ prompt = "Run Lua code: " },
-                                  mypromptbox[mouse.screen].widget,
+                                  mypromptbox[mouse.screen.index].widget,
                                   awful.util.eval, nil,
                                   awful.util.getdir("cache") .. "/history_eval")
                           end),
