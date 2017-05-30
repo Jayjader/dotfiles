@@ -128,3 +128,5 @@ let g:syntastic_check_on_wq = 0
     set joinspaces
     set errorformat=%f:%l:\ %m
     filetype plugin indent on
+
+    syntax on
