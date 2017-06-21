@@ -14,7 +14,7 @@ ZSH_THEME="agnoster"
 DEFAULT_USER='jayjader'
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -36,7 +36,7 @@ DEFAULT_USER='jayjader'
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -77,7 +77,18 @@ fi
 export ARCHFLAGS="-arch x86_64"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Start the gpg-agent if not already running
+if ! pgrep -x -u "${USER}" gpg-agent >/dev/null 2>&1; then
+    gpg-connect-agent /bye >/dev/null 2>&1
+    echo gpg agent started
+fi
+# set ssh to use gpg-agent
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+fi
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -93,8 +104,8 @@ alias wifiM='netctl start Manguey'
 alias wifiA='netctl start Appartment'
 
 # Restart/stop current profile
-alias wifir='netctl list | grep \* | cut -d " " -f2 | xargs netctl restart'
-alias wifis='netctl list | grep \* | cut -d " " -f2 | xargs netctl stop'
+alias wifir='netctl restart $(netctl list | grep \* | cut -d " " -f2)'
+alias wifis='netctl stop $(netctl list | grep \* | cut -d " " -f2)'
 
 # Display wifi ip address
 alias ipwifi='ip address show dev wlp2s0'
@@ -107,17 +118,15 @@ alias btdown='systemctl stop bluetooth.service'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
+alias dmesg='dmesg --color=auto'
 
 # ls
 alias ll='ls -l'
 alias la='ls -Al'
 
 # Pacman
-alias supac='sudo pacman'
-alias pacu='sudo pacman -Syu'
-alias pacs='sudo pacman -S'
-alias paci='pacman -Si'
-alias pacr='sudo pacman -R'
+alias pacu='pacaur -Syu'
+alias pacr='pacaur -R'
 
 # Colored man
 man() {
@@ -142,3 +151,7 @@ alias factorio='padsp ~/Documents/factorio/bin/x64/factorio &'
 alias qwer='setxkbmap fr'
 alias azer='setxkbmap us'
 alias dvor='setxkbmap dvorak'
+
+
+# Auto lock screen after 5 min inactivity
+# xautolock -time 5 -locker i3lock &
