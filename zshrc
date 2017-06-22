@@ -128,6 +128,9 @@ alias la='ls -Al'
 alias pacu='pacaur -Syu'
 alias pacr='pacaur -R'
 
+# pip
+alias pipu='sudo pip install -U $(pip list --format=legacy | cut -d " " -f1)'
+
 # Colored man
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
