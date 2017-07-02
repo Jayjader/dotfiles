@@ -10,7 +10,6 @@
         Plugin 'gmarik/Vundle.vim'
         Plugin 'bling/vim-airline'
         Plugin 'tpope/vim-sensible'
-        Plugin 'Valloric/YouCompleteMe'
         Plugin 'SirVer/ultisnips'
         Plugin 'scrooloose/syntastic'
         Plugin 'tpope/vim-commentary'
@@ -40,10 +39,6 @@ set autoindent
 syntax enable
 
 set background=dark
-Bundle 'vim-colors-solarized'
-colorscheme solarized
-let g:solarized_termcolors=256
-
 
 let g:ada_standard_types=1
 
