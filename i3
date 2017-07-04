@@ -44,6 +44,7 @@ bindcode 233 exec --no-startup-id xbacklight -inc 10
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec terminator --class Floating
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -55,17 +56,19 @@ bindsym $mod+d exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# Change focus only with keyboard
+focus_follows_mouse no
+
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# Move to & from scratchpad
+# 22 -> backspace; 51 -> backslash
+bindcode $mod+22 scratchpad show
+bindcode $mod+51 move scratchpad
 
 # move focused window
 bindsym $mod+Shift+j move left
