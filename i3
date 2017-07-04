@@ -44,7 +44,6 @@ bindcode 233 exec --no-startup-id xbacklight -inc 10
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Shift+Return exec terminator --class Floating
 
 # kill focused window
 bindsym $mod+Shift+q kill
