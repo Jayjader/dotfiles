@@ -157,4 +157,4 @@ alias azer='setxkbmap us'
 alias dvor='setxkbmap dvorak'
 
 # Set wallpaper
-~/.wallpapers/wp_init.sh
+wpg -t
