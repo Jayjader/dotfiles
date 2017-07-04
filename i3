@@ -39,10 +39,8 @@ set $Locker i3lock && sleep 1
 bindsym $mod+Control+l exec --no-startup-id $Locker
 
 # Control screen brightness
-bindsym $mod+X86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
-bindsym $mod+Shift+X86MonBrightnessUp exec --no-startup-id xbacklight -inc 1
-bindsym $mod+X86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
-bindsym $mod+Shift+X86MonBrightnessDown exec --no-startup-id xbacklight -dec 1
+bindcode 232 exec --no-startup-id xbacklight -dec 10
+bindcode 233 exec --no-startup-id xbacklight -inc 10
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -107,16 +105,19 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# workspace names
+set $wsmail 8: mail
+
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
+bindsym $mod+3 workspace 3: slack
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
+bindsym $mod+8 workspace 8: mail
+bindsym $mod+9 workspace 9: chromium
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
@@ -173,3 +174,5 @@ bar {
 
 # use wpgtk for wallpapers & generated colorschemes
 exec ~/.wallpapers/wp_init.sh
+
+# vim:filetype=i3
