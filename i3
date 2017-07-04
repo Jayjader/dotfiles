@@ -177,4 +177,10 @@ bar {
 # use wpgtk for wallpapers & generated colorschemes
 exec ~/.wallpapers/wp_init.sh
 
+exec --no-startup-id xcompmgr
+
+# conky
+exec --no-startup-id conky -dc ~/.config/conky/conky_left_tree.conf
+exec --no-startup-id conky -dc ~/.config/conky/conky_right_tree.conf
+
 # vim:filetype=i3
