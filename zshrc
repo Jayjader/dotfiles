@@ -156,6 +156,5 @@ alias qwer='setxkbmap fr'
 alias azer='setxkbmap us'
 alias dvor='setxkbmap dvorak'
 
-
-# Auto lock screen after 5 min inactivity
-# xautolock -time 5 -locker i3lock &
+# Set wallpaper
+wpg -t

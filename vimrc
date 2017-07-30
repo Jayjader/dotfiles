@@ -18,6 +18,7 @@
         Plugin 'Yggdroot/indentLine'
         Plugin 'matze/vim-move'
         Plugin 'fatih/vim-go'
+        Plugin 'PotatoesMaster/i3-vim-syntax'
 
         call vundle#end()
     end
