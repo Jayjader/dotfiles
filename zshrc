@@ -37,7 +37,7 @@ CASE_SENSITIVE="true"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="false"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -96,25 +96,6 @@ fi
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# Turn wifi interface on/off
-alias wifiup='sudo ip link set wlp2s0 up'
-alias wifidown='sudo ip link set wlp2s0 down'
-
-# Turn netctl profiles on
-alias wifiM='netctl start Manguey'
-alias wifiA='netctl start Appartment'
-
-# Restart/stop current profile
-alias wifir='netctl restart $(netctl list | grep \* | cut -d " " -f2)'
-alias wifis='netctl stop $(netctl list | grep \* | cut -d " " -f2)'
-
-# Display wifi ip address
-alias ipwifi='ip address show dev wlp2s0'
-
-# Bluetooth on/off
-alias btup='systemctl start bluetooth.service'
-alias btdown='systemctl stop bluetooth.service'
-
 # Always color outputs
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -146,15 +127,3 @@ man() {
 # Change jdk version
 alias jdk8='archlinux-java set java-8-openjdk'
 alias jdk7='archlinux-java set java-7-openjdk'
-
-# Misc
-alias N='flashplayer ~/Documents/N/Nv2-Linux.swf &'
-alias war3='wine ~/.wine/drive_c/users/jayjader/My\ Documents/War3/Warcraft\ III/Warcraft\ III/War3.exe -opengl'
-alias factorio='padsp ~/Documents/factorio/bin/x64/factorio &'
-
-alias qwer='setxkbmap fr'
-alias azer='setxkbmap us'
-alias dvor='setxkbmap dvorak'
-
-# Set wallpaper
-wpg -t
