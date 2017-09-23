@@ -1,7 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$(go env GOPATH)/bin:$PATH
+export GOPATH=$(go env GOPATH)
 export CLASSPATH=~/java/*:$CLASSPATH
-export PATH=$PATH:$(go env GOPATH)/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -149,12 +150,14 @@ alias jdk7='archlinux-java set java-7-openjdk'
 
 # Misc
 alias N='flashplayer ~/Documents/N/Nv2-Linux.swf &'
-alias war3='wine ~/.wine/drive_c/users/jayjader/My\ Documents/War3/Warcraft\ III/Warcraft\ III/War3.exe -opengl'
 alias factorio='padsp ~/Documents/factorio/bin/x64/factorio &'
 
 alias qwer='setxkbmap fr'
 alias azer='setxkbmap us'
 alias dvor='setxkbmap dvorak'
 
-# Set wallpaper
-wpg -t
+if [[ $UID -ne 0 ]]
+then
+    # Set wallpaper
+    wpg -t
+fi
