@@ -10,7 +10,6 @@
         Plugin 'gmarik/Vundle.vim'
         Plugin 'bling/vim-airline'
         Plugin 'tpope/vim-sensible'
-        Plugin 'Valloric/YouCompleteMe'
         Plugin 'SirVer/ultisnips'
         Plugin 'scrooloose/syntastic'
         Plugin 'tpope/vim-commentary'
@@ -132,3 +131,9 @@ let g:syntastic_check_on_wq = 0
     filetype plugin indent on
 
     syntax on
+
+    " OPAM/ OCAML/ merlin
+    let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+    execute "set rtp+=" . g:opamshare . "/merlin/vim"
+    execute "helptags " . g:opamshare . "/merlin/vim/doc"
+    let g:syntastic_ocaml_checkers = ['merlin']

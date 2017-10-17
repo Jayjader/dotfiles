@@ -161,3 +161,6 @@ then
     # Set wallpaper
     wpg -t
 fi
+
+# OCAML / OPAM
+. /home/jayjader/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
