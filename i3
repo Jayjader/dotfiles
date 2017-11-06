@@ -75,11 +75,10 @@ bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# move workspaces between screens (toggles when only 2 screens)
+bindsym $mod+Control+j move workspace to output right
+bindsym $mod+Control+semicolon move workspace to output left
+
 
 # split in horizontal orientation
 bindsym $mod+h split h
