@@ -36,11 +36,11 @@ hide_edge_borders smart
 
 # Lock Screen
 set $Locker i3lock && sleep 1
-bindsym $mod+Control+l exec --no-startup-id $Locker
+bindsym $mod+Control+l exec $Locker
 
 # Control screen brightness
-bindcode 232 exec --no-startup-id xbacklight -dec 10
-bindcode 233 exec --no-startup-id xbacklight -inc 10
+bindcode 232 exec xbacklight -dec 10
+bindcode 233 exec xbacklight -inc 10
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -49,7 +49,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start a dmenu wrapper that only displays valid .desktop entries present
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec i3-dmenu-desktop
 
 # Change focus only with keyboard
 focus_follows_mouse no
@@ -140,7 +140,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # run xrandr auto-config script (for when plugging/unplugging external monitor)
-bindsym $mod+Shift+m exec --no-startup-id ~/dotfiles/monitor_auto_handle.sh
+bindsym $mod+Shift+m exec ~/dotfiles/monitor_auto_handle.sh
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -175,8 +175,8 @@ bar {
 }
 
 
-# use wpgtk for wallpapers & generated colorschemes
-exec ~/.wallpapers/wp_init.sh
+# Initial monitor, wallpaper & colorscheme setup
+exec ~/dotfiles/monitor_auto_handle.sh
 
 exec --no-startup-id xcompmgr
 
