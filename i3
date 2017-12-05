@@ -105,13 +105,13 @@ bindsym $mod+a focus parent
 # workspace names
 set $wsmail 8: mail
 set $wsweb 9: web
-set $wsslack 3: slack
+set $wschat 3: chat
 set $wscode 2: code
 
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace $wscode
-bindsym $mod+3 workspace $wsslack
+bindsym $mod+3 workspace $wschat
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
@@ -123,7 +123,7 @@ bindsym $mod+0 workspace 10
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace $wscode
-bindsym $mod+Shift+3 move container to workspace $wsslack
+bindsym $mod+Shift+3 move container to workspace $wschat
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
