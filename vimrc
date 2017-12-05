@@ -19,6 +19,7 @@
         Plugin 'matze/vim-move'
         Plugin 'fatih/vim-go'
         Plugin 'PotatoesMaster/i3-vim-syntax'
+        Plugin 'dracula/vim'
 
         call vundle#end()
     end
@@ -38,11 +39,6 @@ set backspace=2
 set nu
 set autoindent
 syntax enable
-
-set background=dark
-Bundle 'vim-colors-solarized'
-colorscheme solarized
-let g:solarized_termcolors=256
 
 
 let g:ada_standard_types=1
@@ -102,8 +98,6 @@ let g:syntastic_check_on_wq = 0
     autocmd Filetype gitcommit set spell textwidth=72 nofoldenable colorcolumn=51,73
     autocmd Filetype mkd,liquid,tex,text set spell textwidth=80 shiftwidth=2
 
-" For vimperatorrc
-    autocmd BufNewFile,BufRead .vimperatorrc,vimperatorrc set filetype=vim
 
 " Change keymap for vim-move
     nmap <C-Up>   <Plug>MoveLineUp
