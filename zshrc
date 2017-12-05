@@ -156,11 +156,6 @@ alias qwer='setxkbmap fr'
 alias azer='setxkbmap us'
 alias dvor='setxkbmap dvorak'
 
-if [[ $UID -ne 0 ]]
-then
-    # Set wallpaper
-    wpg -t
-fi
 
 # OCAML / OPAM
 . /home/jayjader/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

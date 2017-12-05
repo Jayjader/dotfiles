@@ -8,4 +8,4 @@ else
     xrandr --output "$laptop" --primary --auto --output "$extern" --auto --left-of "$laptop"
 fi
 
-wpg -s arch.jpg
+~/.fehbg &
