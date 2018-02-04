@@ -48,8 +48,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start a dmenu wrapper that only displays valid .desktop entries present
-bindsym $mod+d exec i3-dmenu-desktop
+# start dmenu
+bindsym $mod+d exec dmenu_run
 
 # Change focus only with keyboard
 focus_follows_mouse no
