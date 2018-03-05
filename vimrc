@@ -20,6 +20,7 @@
         Plugin 'fatih/vim-go'
         Plugin 'PotatoesMaster/i3-vim-syntax'
         Plugin 'dracula/vim'
+        Plugin 'Valloric/YouCompleteMe'
 
         call vundle#end()
     end
@@ -163,3 +164,6 @@ for tool in s:opam_packages
   endif
 endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
+
+" ocaml autoindent plugin
+set rtp+=/home/jayjader/.vim/bundle/ocp-indent-vim
