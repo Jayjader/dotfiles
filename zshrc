@@ -156,6 +156,6 @@ alias qwer='setxkbmap fr'
 alias azer='setxkbmap us'
 alias dvor='setxkbmap dvorak'
 
-
 # OCAML / OPAM
 . /home/jayjader/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+alias ocaml='rlwrap ocaml' # add readline-support to ocaml interpreter (allows scrolling up & down in command history)
