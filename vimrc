@@ -11,22 +11,19 @@
         Plugin 'bling/vim-airline'
         Plugin 'tpope/vim-sensible'
         Plugin 'SirVer/ultisnips'
-        Plugin 'scrooloose/syntastic'
+        Plugin 'honza/vim-snippets'
         Plugin 'tpope/vim-commentary'
-        Plugin 'tpope/vim-endwise'
         Plugin 'javacomplete'
         Plugin 'Yggdroot/indentLine'
         Plugin 'matze/vim-move'
         Plugin 'fatih/vim-go'
         Plugin 'PotatoesMaster/i3-vim-syntax'
-        Plugin 'dracula/vim'
         Plugin 'Valloric/YouCompleteMe'
+        Plugin 'flazz/vim-colorschemes'
+        Plugin 'scrooloose/syntastic'
 
         call vundle#end()
     end
-
-" For syntastic
-    let g:syntastic_tex_checkers = ['chktek']
 
 set nocompatible
 
@@ -55,8 +52,8 @@ filetype plugin indent on
 set colorcolumn=81
 highlight ColorColumn ctermbg=235
 
-
-"Syntastic"
+" Syntastic
+let g:syntastic_tex_checkers = ['chktek']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -65,6 +62,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
 
 "For Python
     let g:ycm_python_binary_path = '/usr/bin/python3'
@@ -76,7 +74,7 @@ let g:syntastic_check_on_wq = 0
     let g:ycm_confirm_extra_conf=0
     set matchpairs+=<:>
     autocmd FileType c,cpp setlocal comments-=:// comments+=f://
-    autocmd FileType c,cpp setlocal textwidth=0
+    autocmd FileType c,cpp setlocal textwidth=0 shiftwidth=2 softtabstop=2
 
     set path+=include
 
@@ -97,7 +95,10 @@ let g:syntastic_check_on_wq = 0
 
 " Spell checking and wrapping in some file types
     autocmd Filetype gitcommit set spell textwidth=72 nofoldenable colorcolumn=51,73
-    autocmd Filetype mkd,liquid,tex,text set spell textwidth=80 shiftwidth=2
+    autocmd Filetype mkd,liquid,tex,text set spell spelllang=en,fr textwidth=80 shiftwidth=2
+
+" LatEx
+    let g:tex_flavor='latex'
 
 
 " Change keymap for vim-move
@@ -110,8 +111,11 @@ let g:syntastic_check_on_wq = 0
     vnoremap < <gv
     vnoremap > >gv
 
-" YCM FixIt
+" YCM Stuff
     let g:ycm_echo_current_diagnostic=1
+    let g:ycm_filetype_blacklist = { 'ocaml' : 1 ,
+          \ 'tex' : 1,
+          \ 'text' : 1}
 
 " Other stuff
     set nospell
@@ -132,6 +136,7 @@ let g:syntastic_check_on_wq = 0
     execute "set rtp+=" . g:opamshare . "/merlin/vim"
     execute "helptags " . g:opamshare . "/merlin/vim/doc"
     let g:syntastic_ocaml_checkers = ['merlin']
+    autocmd Filetype ocaml setlocal textwidth=0 shiftwidth=2 softtabstop=2
 " ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
 let s:opam_share_dir = system("opam config var share")
 let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
@@ -166,4 +171,9 @@ endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
 
 " ocaml autoindent plugin
-set rtp+=/home/jayjader/.vim/bundle/ocp-indent-vim
+"set rtp+=/home/jayjader/.vim/bundle/ocp-indent-vim
+
+colorscheme hybrid
+set background=dark
+
+set splitright
