@@ -87,8 +87,10 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Always color outputs
 alias ls='ls -G'
 alias grep='grep --color=auto'
-alias diff='diff --color=auto'
 alias dmesg='dmesg --color=auto'
+function diff {
+	colordiff -u "$@" | less -RF
+}
 
 # ls
 alias la='ls -Al'
