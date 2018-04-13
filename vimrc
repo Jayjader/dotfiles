@@ -10,15 +10,9 @@
         Plugin 'gmarik/Vundle.vim'
         Plugin 'bling/vim-airline'
         Plugin 'tpope/vim-sensible'
-        Plugin 'SirVer/ultisnips'
-        Plugin 'honza/vim-snippets'
         Plugin 'tpope/vim-commentary'
-        Plugin 'javacomplete'
         Plugin 'Yggdroot/indentLine'
         Plugin 'matze/vim-move'
-        Plugin 'fatih/vim-go'
-        Plugin 'PotatoesMaster/i3-vim-syntax'
-        Plugin 'Valloric/YouCompleteMe'
         Plugin 'flazz/vim-colorschemes'
         Plugin 'scrooloose/syntastic'
 
@@ -38,8 +32,6 @@ set nu
 set autoindent
 syntax enable
 
-
-let g:ada_standard_types=1
 
 hi CursorLine term=bold cterm=bold ctermbg=black guibg=Grey40
 set cursorline
@@ -67,29 +59,6 @@ let g:syntastic_check_on_wq = 0
 "For Python
     let g:ycm_python_binary_path = '/usr/bin/python3'
 
-" For C++
-    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm_extra_conf.py'
-    let g:syntastic_cpp_compiler_options='-std=c++1y'
-    let g:ycm_complete_in_comments=1
-    let g:ycm_confirm_extra_conf=0
-    set matchpairs+=<:>
-    autocmd FileType c,cpp setlocal comments-=:// comments+=f://
-    autocmd FileType c,cpp setlocal textwidth=0 shiftwidth=2 softtabstop=2
-
-    set path+=include
-
-" For Java
-    autocmd FileType java setlocal textwidth=0
-    autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-    set suffixes+=.class
-    let g:syntastic_java_javac_config_file_enabled=1
-    let g:syntastic_java_javac_options='-Xlint'
-
-" For Whitespace
-    autocmd Filetype whitespace setlocal noexpandtab
-    autocmd Filetype whitespace setlocal shiftwidth=8
-    autocmd Filetype whitespace setlocal softtabstop=8
-
 " For html and css
     autocmd Filetype htlm,css setlocal shiftwidth=2
 
@@ -111,11 +80,6 @@ let g:syntastic_check_on_wq = 0
     vnoremap < <gv
     vnoremap > >gv
 
-" YCM Stuff
-    let g:ycm_echo_current_diagnostic=1
-    let g:ycm_filetype_blacklist = { 'ocaml' : 1 ,
-          \ 'tex' : 1,
-          \ 'text' : 1}
 
 " Other stuff
     set nospell
@@ -130,48 +94,6 @@ let g:syntastic_check_on_wq = 0
     filetype plugin indent on
 
     syntax on
-
-    " OPAM/ OCAML/ merlin
-    let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-    execute "set rtp+=" . g:opamshare . "/merlin/vim"
-    execute "helptags " . g:opamshare . "/merlin/vim/doc"
-    let g:syntastic_ocaml_checkers = ['merlin']
-    autocmd Filetype ocaml setlocal textwidth=0 shiftwidth=2 softtabstop=2
-" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
-let s:opam_share_dir = system("opam config var share")
-let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
-
-let s:opam_configuration = {}
-
-function! OpamConfOcpIndent()
-  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
-endfunction
-let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
-
-function! OpamConfOcpIndex()
-  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
-endfunction
-let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
-
-function! OpamConfMerlin()
-  let l:dir = s:opam_share_dir . "/merlin/vim"
-  execute "set rtp+=" . l:dir
-endfunction
-let s:opam_configuration['merlin'] = function('OpamConfMerlin')
-
-let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
-let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
-for tool in s:opam_packages
-  " Respect package order (merlin should be after ocp-index)
-  if count(s:opam_available_tools, tool) > 0
-    call s:opam_configuration[tool]()
-  endif
-endfor
-" ## end of OPAM user-setup addition for vim / base ## keep this line
-
-" ocaml autoindent plugin
-"set rtp+=/home/jayjader/.vim/bundle/ocp-indent-vim
 
 colorscheme hybrid
 set background=dark
