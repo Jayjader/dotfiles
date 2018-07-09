@@ -74,6 +74,7 @@ bindsym $mod+Shift+semicolon move right
 # move workspaces between screens (toggles when only 2 screens)
 bindsym $mod+Control+j move workspace to output right
 bindsym $mod+Control+semicolon move workspace to output left
+bindsym $mod+Control+k move workspace to output down
 
 
 # split in horizontal orientation
