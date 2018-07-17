@@ -66,6 +66,9 @@ let g:syntastic_check_on_wq = 0
     autocmd Filetype gitcommit set spell textwidth=72 nofoldenable colorcolumn=51,73
     autocmd Filetype mkd,liquid,tex,text set spell spelllang=en,fr textwidth=80 shiftwidth=2
 
+" Don't hide markdown formatting characters
+    autocmd Filetype mkd set conceallevel=0
+
 " LatEx
     let g:tex_flavor='latex'
 
