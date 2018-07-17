@@ -51,11 +51,10 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Must be done before plugins are loaded
+export NVM_LAZY_LOAD=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git common-aliases pass node npm yarn colored-man-pages osx)
+plugins=(git git-flow-completion common-aliases pass zsh-nvm node npm yarn colored-man-pages osx docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -68,9 +67,9 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+    export EDITOR='vim'
 else
-  export EDITOR='vim'
+    export EDITOR='vim'
 fi
 
 # Compilation flags
@@ -89,7 +88,7 @@ alias ls='ls -G'
 alias grep='grep --color=auto'
 alias dmesg='dmesg --color=auto'
 function diff {
-	colordiff -u "$@" | less -RF
+    colordiff -u "$@" | less -RF
 }
 
 # ls
@@ -106,6 +105,5 @@ man() {
     command man "$@"
 }
 
-# NVM install dir
+# NVM
 export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
