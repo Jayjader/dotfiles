@@ -57,7 +57,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 export NVM_LAZY_LOAD=true
 
-plugins=(git common-aliases django pip zsh-nvm npm)
+plugins=(git common-aliases pip zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
 
