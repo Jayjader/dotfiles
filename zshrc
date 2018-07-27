@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$(go env GOPATH)/bin:$PATH
-export GOPATH=$(go env GOPATH)
+export PATH=/home/jayjader/go/bin:$PATH
+export GOPATH=/home/jayjader/go
 export CLASSPATH=~/java/*:$CLASSPATH
 
 # Path to your oh-my-zsh installation.
@@ -53,11 +53,11 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git common-aliases django pip)
+export NVM_LAZY_LOAD=true
+
+plugins=(git common-aliases django pip zsh-nvm npm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,7 +118,7 @@ alias btdown='systemctl stop bluetooth.service'
 
 # Always color outputs
 alias ls='ls --color=auto'
-alias grep='grep --color=auto'
+alias grep='grep --color=auto -n'
 alias diff='diff --color=auto'
 alias dmesg='dmesg --color=auto'
 
@@ -132,6 +132,7 @@ alias pacr='pacaur -R'
 
 # pip
 alias pipu='sudo pip install -U $(pip list --format=legacy | cut -d " " -f1)'
+# eval "$(pipenv --completion)"
 
 # Colored man
 man() {
@@ -159,3 +160,4 @@ alias dvor='setxkbmap dvorak'
 # OCAML / OPAM
 . /home/jayjader/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 alias ocaml='rlwrap ocaml' # add readline-support to ocaml interpreter (allows scrolling up & down in command history)
+
