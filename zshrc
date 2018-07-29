@@ -78,19 +78,21 @@ fi
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Start the gpg-agent if not already running
-if ! pgrep -x -u "${USER}" gpg-agent >/dev/null 2>&1; then
-    gpg-connect-agent /bye >/dev/null 2>&1
-    echo gpg agent started
-fi
-# set ssh to use gpg-agent
-unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-fi
+# If we're in a terminal emulator (and thus X is running), we can use gpg-agent
+case $(tty) in
+    /dev/pts/*)
+        # Start the gpg-agent if not already running
+        if ! pgrep -x -u "${USER}" gpg-agent >/dev/null 2>&1; then
+            gpg-connect-agent /bye >/dev/null 2>&1
+            echo gpg agent started
+        fi
+        # set ssh to use gpg-agent
+        unset SSH_AGENT_PID
+        if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+            export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+        fi
+        ;;
+esac
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
