@@ -1,8 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/home/jayjader/go/bin:$PATH
-export GOPATH=/home/jayjader/go
-export CLASSPATH=~/java/*:$CLASSPATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -78,63 +76,20 @@ fi
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
-# If we're in a terminal emulator (and thus X is running), we can use gpg-agent
-case $(tty) in
-    /dev/pts/*)
-        # Start the gpg-agent if not already running
-        if ! pgrep -x -u "${USER}" gpg-agent >/dev/null 2>&1; then
-            gpg-connect-agent /bye >/dev/null 2>&1
-            echo gpg agent started
-        fi
-        # set ssh to use gpg-agent
-        unset SSH_AGENT_PID
-        if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-            export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-        fi
-        ;;
-esac
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# Turn wifi interface on/off
-alias wifiup='sudo ip link set wlp2s0 up'
-alias wifidown='sudo ip link set wlp2s0 down'
-
-# Turn netctl profiles on
-alias wifiM='netctl start Manguey'
-alias wifiA='netctl start Appartment'
-
-# Restart/stop current profile
-alias wifir='netctl restart $(netctl list | grep \* | cut -d " " -f2)'
-alias wifis='netctl stop $(netctl list | grep \* | cut -d " " -f2)'
-
-# Display wifi ip address
-alias ipwifi='ip address show dev wlp2s0'
-
-# Bluetooth on/off
-alias btup='systemctl start bluetooth.service'
-alias btdown='systemctl stop bluetooth.service'
-
 # Always color outputs
 alias ls='ls --color=auto'
-alias grep='grep --color=auto -n'
+alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias dmesg='dmesg --color=auto'
 
 # ls
 alias ll='ls -l'
 alias la='ls -Al'
-
-# Pacman
-alias pacu='pacaur -Syu'
-alias pacr='pacaur -R'
-
-# pip
-alias pipu='sudo pip install -U $(pip list --format=legacy | cut -d " " -f1)'
-# eval "$(pipenv --completion)"
 
 # Colored man
 man() {
@@ -151,15 +106,6 @@ man() {
 alias jdk8='archlinux-java set java-8-openjdk'
 alias jdk7='archlinux-java set java-7-openjdk'
 
-# Misc
-alias N='flashplayer ~/Documents/N/Nv2-Linux.swf &'
-alias factorio='padsp ~/Documents/factorio/bin/x64/factorio &'
-
 alias qwer='setxkbmap fr'
 alias azer='setxkbmap us'
 alias dvor='setxkbmap dvorak'
-
-# OCAML / OPAM
-. /home/jayjader/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-alias ocaml='rlwrap ocaml' # add readline-support to ocaml interpreter (allows scrolling up & down in command history)
-
